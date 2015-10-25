@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', false),
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+	'timezone' => 'Asia/Tokyo',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+	'locale' => 'ja',
 
     /*
     |--------------------------------------------------------------------------
@@ -145,6 +145,15 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+		//add Debugbar
+		'Barryvdh\Debugbar\ServiceProvider',
+		//add API-Generator
+		'Illuminate\Html\HtmlServiceProvider',
+		'Laracasts\Flash\FlashServiceProvider',
+		'Mitul\Generator\GeneratorServiceProvider'
+
+
+
     ],
 
     /*
@@ -193,6 +202,13 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+		//add Debugbar
+		'Debugbar' => 'Barryvdh\Debugbar\Facade', 
+		//add API-Generator
+		'Form'  => 'Illuminate\Html\FormFacade',
+		'Html'  => 'Illuminate\Html\HtmlFacade',
+		'Flash' => 'Laracasts\Flash\Flash'
+
 
     ],
 

@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('members', 'MemberController');
+
+Route::get('members/{id}/delete', [
+    'as' => 'members.delete',
+    'uses' => 'MemberController@destroy',
+]);

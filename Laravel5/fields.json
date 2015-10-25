@@ -1,0 +1,25 @@
+[
+    {
+		"field":"name:string",
+		"validations": "required"
+	},
+    {
+		"field":"age:integer",
+		"validations": "required"
+	},
+	{
+		"field":"gender:integer",
+		"type":"radio:male,female",
+		"validations": "required"
+	},
+	{
+		"field":"skill:string",
+		"type":"select:Web,iOS,Android",
+		"validations": "required"
+	},
+	{
+		"field":"detail:text",
+		"type":"textarea",
+		"validations": ""
+	}
+]
