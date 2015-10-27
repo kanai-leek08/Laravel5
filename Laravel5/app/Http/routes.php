@@ -21,3 +21,11 @@ Route::get('members/{id}/delete', [
     'as' => 'members.delete',
     'uses' => 'MemberController@destroy',
 ]);
+
+Route::get('api/test',function(){
+
+    $res['status'] = "OK";
+    $res['message'] = "No problem";
+
+    return Response::json($res);
+});
