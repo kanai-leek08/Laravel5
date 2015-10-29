@@ -34,8 +34,8 @@
 					<td>{!! $member->skill !!}</td>
 					<td>{!! $member->detail !!}</td>
                             <td>
-                                <a href="{!! route('members.edit', [$member->id]) !!}">update<i class="glyphicon glyphicon-edit"></i></a>
-                                <a href="{!! route('members.delete', [$member->id]) !!}" onclick="return confirm('Are you sure wants to delete this Member?')">delete<i class="glyphicon glyphicon-remove"></i></a>
+                                <a href="{!! route('members.edit', [$member->id]) !!}"><i class="glyphicon glyphicon-edit"></i></a>
+                                <a href="{!! route('members.delete', [$member->id]) !!}" onclick="return confirm('Are you sure wants to delete this Member?')"><i class="glyphicon glyphicon-remove"></i></a>
                             </td>
                         </tr>
                     @endforeach

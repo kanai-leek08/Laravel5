@@ -7,6 +7,7 @@ use App\Libraries\Repositories\MemberRepository;
 use Mitul\Controller\AppBaseController;
 use Response;
 use Flash;
+use Debugbar;
 
 class MemberController extends AppBaseController
 {
@@ -17,6 +18,8 @@ class MemberController extends AppBaseController
 	function __construct(MemberRepository $memberRepo)
 	{
 		$this->memberRepository = $memberRepo;
+		$this->middleware('route');
+		$this->middleware('only', ['only' => ['index']]);
 	}
 
 	/**
@@ -28,7 +31,9 @@ class MemberController extends AppBaseController
 	 */
 	public function index(Request $request)
 	{
-	    $input = $request->all();
+	  $input = $request->all();
+		Debugbar::info(__FILE__ . ':' . __LINE__ . '▼リクエストパラメータはActionの引数で受け取れる(メソッドインジェクション)');
+		Debugbar::warning($input);
 
 		$result = $this->memberRepository->search($input);
 
@@ -48,6 +53,7 @@ class MemberController extends AppBaseController
 	 */
 	public function create()
 	{
+		Debugbar::info(__FILE__ . ':' . __LINE__ .  '▼パラメータvalidation:Controllerのメソッド(storeやupdate)にRequestクラスをMIすれば自動でrulesのvalidateが実行される。');
 		return view('members.create');
 	}
 
@@ -60,7 +66,7 @@ class MemberController extends AppBaseController
 	 */
 	public function store(CreateMemberRequest $request)
 	{
-        $input = $request->all();
+    $input = $request->all();
 
 		$member = $this->memberRepository->store($input);
 
@@ -97,6 +103,7 @@ class MemberController extends AppBaseController
 	 */
 	public function edit($id)
 	{
+		Debugbar::info(__FILE__ . ':' . __LINE__ .  '▼パラメータvalidation:Controllerのメソッド(storeやupdate)にRequestクラスをMIすれば自動でrulesのvalidateが実行される。');
 		$member = $this->memberRepository->findMemberById($id);
 
 		if(empty($member))
