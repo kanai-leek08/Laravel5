@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory as Faker;
+use Carbon\Carbon;
+use App\Models\Member;
+
 
 class MembersTableSeeder extends Seeder
 {
@@ -60,5 +64,22 @@ class MembersTableSeeder extends Seeder
 				'updated_at' => '2015-01-01 00:00:00',
 			],
 		]);
+
+		//テストデータ自動作成クラス Fakerを利用
+		$faker = Faker::create('ja_JP');
+		$gender = ['男', '女'];
+		$skill = ['iOS', 'Android', 'Web'];
+
+		for ($i = 0; $i < 10; $i++) {
+		    Member::create([
+    		    'name' => $faker->name,
+    		    'age' => $faker->regexify('[0-9]{2}'),
+    		    'gender' => $faker->randomElement($gender),
+    		    'skill' => $faker->randomElement($skill),
+    		    'detail' => $faker->paragraph(),
+    		    'created_at' => Carbon::today(),
+    		    'updated_at' => Carbon::today()
+		    ]);
+		}
     }
 }

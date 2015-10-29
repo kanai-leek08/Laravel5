@@ -4,11 +4,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
-    
+
 	public $table = "members";
 
 	public $primaryKey = "id";
-    
+
 	public $timestamps = true;
 
 	public $fillable = [
@@ -21,9 +21,9 @@ class Member extends Model
 
 	public static $rules = [
 	    "name" => "required",
-		"age" => "required",
-		"gender" => "required",
-		"skill" => "required"
+		"age" => "required|numeric|max:100",
+		"gender" => "required|in:male,falmale",
+		"skill" => "required|regex:/[a-z]{20}/"
 	];
 
 }
